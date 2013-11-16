@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="FoodBucketModelStoreContainer" CdmEntityContainer="FoodBucketDataModel">
+    <EntitySetMapping Name="countryTbls">
+      <EntityTypeMapping TypeName="FoodBucketModel.countryTbl">
+        <MappingFragment StoreEntitySet="countryTbl">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="image" ColumnName="image" />
+          <ScalarProperty Name="title" ColumnName="title" />
+          <ScalarProperty Name="description" ColumnName="description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="recipeTbls">
+      <EntityTypeMapping TypeName="FoodBucketModel.recipeTbl">
+        <MappingFragment StoreEntitySet="recipeTbl">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="recipe_title" ColumnName="recipe_title" />
+          <ScalarProperty Name="ingredients" ColumnName="ingredients" />
+          <ScalarProperty Name="country_id" ColumnName="country_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

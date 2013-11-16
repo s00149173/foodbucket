@@ -1,0 +1,34 @@
+﻿@model IEnumerable<FoodBucket.Recipy>
+
+
+
+<h2>@ViewBag.Country</h2>
+
+
+
+@foreach (var item in Model)
+{
+    <div class="col-md-12">
+        <h4>
+            @Html.DisplayFor(modelItem => item.title)
+        </h4>
+        <div class="row">
+            <div class="col-md-8">
+                <blockquote>
+                    @Html.DisplayFor(modelItem => item.description) <br />
+                     @Html.ActionLink("View Recipe", "Details", "Recipes", new { id = item.id_recipe}, null)
+                 </blockquote>
+        </div>
+        <div class="col-md-4">
+            <img  src="~/@Html.DisplayFor(modelItem => item.image_rec)" />
+        </div>
+
+
+
+    </div>
+
+
+</div>
+}
+
+

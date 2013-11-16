@@ -1,0 +1,74 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="foodbucketModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Comment">
+    <Key>
+      <PropertyRef Name="id_comment" />
+    </Key>
+    <Property Name="id_comment" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="comment_text" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="id_recipie" Type="Int32" Nullable="false" />
+    <Property Name="author" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Recipy" Relationship="Self.FK_Comments_Recipes" FromRole="Comments" ToRole="Recipies" />
+  </EntityType>
+  <EntityType Name="Country">
+    <Key>
+      <PropertyRef Name="id_country" />
+    </Key>
+    <Property Name="id_country" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" MaxLength="35" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="image_con" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <NavigationProperty Name="Recipies" Relationship="Self.FK_Recipies_Countries" FromRole="Countries" ToRole="Recipies" />
+  </EntityType>
+  <EntityType Name="Recipy">
+    <Key>
+      <PropertyRef Name="id_recipe" />
+    </Key>
+    <Property Name="id_recipe" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="id_country" Type="Int32" Nullable="false" />
+    <Property Name="title" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="description" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ingredients" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="preparation" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="extra_description" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="image_rec" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
+    <NavigationProperty Name="Comments" Relationship="Self.FK_Comments_Recipes" FromRole="Recipies" ToRole="Comments" />
+    <NavigationProperty Name="Country" Relationship="Self.FK_Recipies_Countries" FromRole="Recipies" ToRole="Countries" />
+  </EntityType>
+  <Association Name="FK_Comments_Recipes">
+    <End Role="Recipies" Type="Self.Recipy" Multiplicity="1" />
+    <End Role="Comments" Type="Self.Comment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Recipies">
+        <PropertyRef Name="id_recipe" />
+      </Principal>
+      <Dependent Role="Comments">
+        <PropertyRef Name="id_recipie" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Recipies_Countries">
+    <End Role="Countries" Type="Self.Country" Multiplicity="1" />
+    <End Role="Recipies" Type="Self.Recipy" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Countries">
+        <PropertyRef Name="id_country" />
+      </Principal>
+      <Dependent Role="Recipies">
+        <PropertyRef Name="id_country" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="FoodBucketData" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Comments" EntityType="Self.Comment" />
+    <EntitySet Name="Countries" EntityType="Self.Country" />
+    <EntitySet Name="Recipies" EntityType="Self.Recipy" />
+    <AssociationSet Name="FK_Comments_Recipes" Association="Self.FK_Comments_Recipes">
+      <End Role="Recipies" EntitySet="Recipies" />
+      <End Role="Comments" EntitySet="Comments" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Recipies_Countries" Association="Self.FK_Recipies_Countries">
+      <End Role="Countries" EntitySet="Countries" />
+      <End Role="Recipies" EntitySet="Recipies" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

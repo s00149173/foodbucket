@@ -1,0 +1,51 @@
+﻿@model FoodBucket.Recipy
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>@ViewBag.Message</h2>
+
+<fieldset>
+    
+    <div class="display-field">
+        <h2>@Html.DisplayFor(model => model.title)</h2>
+    </div>
+
+   
+    <div class="display-field">
+        @Html.DisplayFor(model => model.description)
+    </div>
+
+    <div class="display-label">
+        <h3> @Html.DisplayNameFor(model => model.ingredients)</h3>
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ingredients)
+    </div>
+
+    <div class="display-label">
+        <h3> @Html.DisplayNameFor(model => model.preparation)</h3>
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.preparation)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.extra_description)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.extra_description)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.image_rec)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.image_rec)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { /* id=Model.PrimaryKey */ }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

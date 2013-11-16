@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="foodbucketModelStoreContainer" CdmEntityContainer="FoodBucketData">
+    <EntitySetMapping Name="Comments">
+      <EntityTypeMapping TypeName="foodbucketModel.Comment">
+        <MappingFragment StoreEntitySet="Comments">
+          <ScalarProperty Name="id_comment" ColumnName="id_comment" />
+          <ScalarProperty Name="comment_text" ColumnName="comment_text" />
+          <ScalarProperty Name="id_recipie" ColumnName="id_recipie" />
+          <ScalarProperty Name="author" ColumnName="author" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Countries">
+      <EntityTypeMapping TypeName="foodbucketModel.Country">
+        <MappingFragment StoreEntitySet="Countries">
+          <ScalarProperty Name="id_country" ColumnName="id_country" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="image_con" ColumnName="image_con" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Recipies">
+      <EntityTypeMapping TypeName="foodbucketModel.Recipy">
+        <MappingFragment StoreEntitySet="Recipies">
+          <ScalarProperty Name="id_recipe" ColumnName="id_recipe" />
+          <ScalarProperty Name="id_country" ColumnName="id_country" />
+          <ScalarProperty Name="title" ColumnName="title" />
+          <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="ingredients" ColumnName="ingredients" />
+          <ScalarProperty Name="preparation" ColumnName="preparation" />
+          <ScalarProperty Name="extra_description" ColumnName="extra_description" />
+          <ScalarProperty Name="image_rec" ColumnName="image_rec" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

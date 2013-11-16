@@ -1,0 +1,27 @@
+﻿@model IEnumerable<FoodBucket.Country>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+@foreach (var item in Model)
+{
+    <div class="col-md-6">
+        <div class="countryHome">
+
+            <div class=" freshdesignweb">
+                <article class="border c-two" style="background-image: url(@Html.DisplayFor(modelItem => item.image_con))">
+                    <div style="opacity: 0;" class="fdw-background">                       
+                        <h4>@Html.DisplayFor(modelItem => item.name)</h4>
+
+                        <p class="fdw-port">                         
+                            @Html.ActionLink("View Recipes", "Index", "Recipes", new { id = item.id_country }, null)
+                        </p>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </div>
+
+}
+

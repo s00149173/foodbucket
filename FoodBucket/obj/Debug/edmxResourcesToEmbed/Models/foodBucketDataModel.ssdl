@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="FoodBucketModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="countryTbl">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="image" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="title" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="recipeTbl">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="recipe_title" Type="nchar" MaxLength="10" />
+    <Property Name="ingredients" Type="nvarchar" MaxLength="50" />
+    <Property Name="country_id" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_countryTbl_countryTbl">
+    <End Role="countryTbl" Type="Self.countryTbl" Multiplicity="1" />
+    <End Role="countryTbl1" Type="Self.countryTbl" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="countryTbl">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="countryTbl1">
+        <PropertyRef Name="id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_recipeTbl_countryTbl">
+    <End Role="countryTbl" Type="Self.countryTbl" Multiplicity="1" />
+    <End Role="recipeTbl" Type="Self.recipeTbl" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="countryTbl">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="recipeTbl">
+        <PropertyRef Name="country_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="FoodBucketModelStoreContainer">
+    <EntitySet Name="countryTbl" EntityType="Self.countryTbl" Schema="dbo" p3:Type="Tables" xmlns:p3="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+    <EntitySet Name="recipeTbl" EntityType="Self.recipeTbl" Schema="dbo" p3:Type="Tables" xmlns:p3="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+    <AssociationSet Name="FK_countryTbl_countryTbl" Association="Self.FK_countryTbl_countryTbl">
+      <End Role="countryTbl" EntitySet="countryTbl" />
+      <End Role="countryTbl1" EntitySet="countryTbl" />
+    </AssociationSet>
+    <AssociationSet Name="FK_recipeTbl_countryTbl" Association="Self.FK_recipeTbl_countryTbl">
+      <End Role="countryTbl" EntitySet="countryTbl" />
+      <End Role="recipeTbl" EntitySet="recipeTbl" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
