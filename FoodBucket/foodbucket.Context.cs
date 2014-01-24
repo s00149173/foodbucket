@@ -13,10 +13,10 @@ namespace FoodBucket
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class foodbucketdbmodel : DbContext
+    public partial class foodbucketEntities : DbContext
     {
-        public foodbucketdbmodel()
-            : base("name=foodbucketdbmodel")
+        public foodbucketEntities()
+            : base("name=foodbucketEntities")
         {
         }
     
@@ -28,5 +28,6 @@ namespace FoodBucket
         public DbSet<Comment> Comments { get; set; }
         public DbSet<Country> Countries { get; set; }
         public DbSet<Recipy> Recipies { get; set; }
+        public DbSet<System_Users> System_Users { get; set; }
     }
 }

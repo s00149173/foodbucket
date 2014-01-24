@@ -1,20 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using System.Linq;
 using System.Web.Mvc;
 namespace FoodBucket.Controllers
 {
     public class HomeController : Controller
     {
-        private foodbucketdbmodel db = new foodbucketdbmodel();
+        private readonly foodbucketEntities _db = new foodbucketEntities();
         //
         // GET: /Home/
 
         public ActionResult Index()
         {
             ViewBag.PageTitle = "Home - FoodBuck.com";
-            var countries = db.Countries.ToList();
+            var countries = _db.Countries.ToList();
             return View(countries);      
         }
 

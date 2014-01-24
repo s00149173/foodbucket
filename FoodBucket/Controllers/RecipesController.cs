@@ -1,13 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using System.Linq;
 using System.Web.Mvc;
 namespace FoodBucket.Controllers
 {
     public class RecipesController : Controller
     {
-        private foodbucketdbmodel db = new foodbucketdbmodel();
+        private foodbucketEntities db = new foodbucketEntities();
         //
         // GET: /Recipes/
 

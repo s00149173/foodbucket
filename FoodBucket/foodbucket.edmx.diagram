@@ -4,12 +4,13 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="18c8b78f3dc14737ba4e9f74da9e3bbd" Name="Diagram1">
+      <Diagram DiagramId="b07977a6be5949e8a07dab98099d2c2a" Name="Diagram1">
         <EntityTypeShape EntityType="foodbucketModel.Comment" Width="1.5" PointX="5.25" PointY="1.5" IsExpanded="true" />
         <EntityTypeShape EntityType="foodbucketModel.Country" Width="1.5" PointX="0.75" PointY="1.5" IsExpanded="true" />
         <EntityTypeShape EntityType="foodbucketModel.Recipy" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
         <AssociationConnector Association="foodbucketModel.FK_Comments_Recipes" ManuallyRouted="false" />
         <AssociationConnector Association="foodbucketModel.FK_Recipies_Countries" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="foodbucketModel.System_Users" Width="1.5" PointX="6.2866629186489913" PointY="13.404900527282106" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

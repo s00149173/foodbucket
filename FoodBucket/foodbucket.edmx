@@ -1,0 +1,244 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="foodbucketModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityContainer Name="foodbucketModelStoreContainer">
+          <EntitySet Name="System_Users" EntityType="foodbucketModel.Store.System_Users" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Comments" EntityType="foodbucketModel.Store.Comments" store:Type="Tables" Schema="foodbucket" />
+          <EntitySet Name="Countries" EntityType="foodbucketModel.Store.Countries" store:Type="Tables" Schema="foodbucket" />
+          <EntitySet Name="Recipies" EntityType="foodbucketModel.Store.Recipies" store:Type="Tables" Schema="foodbucket" />
+          <AssociationSet Name="FK_Comments_Recipes" Association="foodbucketModel.Store.FK_Comments_Recipes">
+            <End Role="Recipies" EntitySet="Recipies" />
+            <End Role="Comments" EntitySet="Comments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Recipies_Countries" Association="foodbucketModel.Store.FK_Recipies_Countries">
+            <End Role="Countries" EntitySet="Countries" />
+            <End Role="Recipies" EntitySet="Recipies" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="System_Users">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Username" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="Password" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="RegDate" Type="datetime" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" Nullable="false" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Comments">
+          <Key>
+            <PropertyRef Name="id_comment" />
+          </Key>
+          <Property Name="id_comment" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="comment_text" Type="varchar" Nullable="false" MaxLength="500" />
+          <Property Name="id_recipie" Type="int" Nullable="false" />
+          <Property Name="author" Type="varchar" Nullable="false" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="Countries">
+          <Key>
+            <PropertyRef Name="id_country" />
+          </Key>
+          <Property Name="id_country" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="nvarchar" Nullable="false" MaxLength="35" />
+          <Property Name="image_con" Type="image" />
+        </EntityType>
+        <EntityType Name="Recipies">
+          <Key>
+            <PropertyRef Name="id_recipe" />
+          </Key>
+          <Property Name="id_recipe" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="id_country" Type="int" Nullable="false" />
+          <Property Name="title" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="description" Type="varchar" Nullable="false" MaxLength="500" />
+          <Property Name="ingredients" Type="varchar" Nullable="false" MaxLength="500" />
+          <Property Name="preparation" Type="varchar" Nullable="false" MaxLength="500" />
+          <Property Name="extra_description" Type="varchar" Nullable="false" MaxLength="500" />
+          <Property Name="image_rec" Type="image" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Comments_Recipes">
+          <End Role="Recipies" Type="foodbucketModel.Store.Recipies" Multiplicity="1" />
+          <End Role="Comments" Type="foodbucketModel.Store.Comments" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Recipies">
+              <PropertyRef Name="id_recipe" />
+            </Principal>
+            <Dependent Role="Comments">
+              <PropertyRef Name="id_recipie" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Recipies_Countries">
+          <End Role="Countries" Type="foodbucketModel.Store.Countries" Multiplicity="1" />
+          <End Role="Recipies" Type="foodbucketModel.Store.Recipies" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Countries">
+              <PropertyRef Name="id_country" />
+            </Principal>
+            <Dependent Role="Recipies">
+              <PropertyRef Name="id_country" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="foodbucketModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="foodbucketEntities" p1:LazyLoadingEnabled="true">
+          <EntitySet Name="Comments" EntityType="foodbucketModel.Comment" />
+          <EntitySet Name="Countries" EntityType="foodbucketModel.Country" />
+          <EntitySet Name="Recipies" EntityType="foodbucketModel.Recipy" />
+          <AssociationSet Name="FK_Comments_Recipes" Association="foodbucketModel.FK_Comments_Recipes">
+            <End Role="Recipies" EntitySet="Recipies" />
+            <End Role="Comments" EntitySet="Comments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Recipies_Countries" Association="foodbucketModel.FK_Recipies_Countries">
+            <End Role="Countries" EntitySet="Countries" />
+            <End Role="Recipies" EntitySet="Recipies" />
+          </AssociationSet>
+          <EntitySet Name="System_Users" EntityType="foodbucketModel.System_Users" />
+        </EntityContainer>
+        <EntityType Name="Comment">
+          <Key>
+            <PropertyRef Name="id_comment" />
+          </Key>
+          <Property Name="id_comment" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="comment_text" Type="String" Nullable="false" MaxLength="500" Unicode="false" FixedLength="false" />
+          <Property Name="id_recipie" Type="Int32" Nullable="false" />
+          <Property Name="author" Type="String" Nullable="false" MaxLength="500" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="Recipy" Relationship="foodbucketModel.FK_Comments_Recipes" FromRole="Comments" ToRole="Recipies" />
+        </EntityType>
+        <EntityType Name="Country">
+          <Key>
+            <PropertyRef Name="id_country" />
+          </Key>
+          <Property Name="id_country" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" Nullable="false" MaxLength="35" Unicode="true" FixedLength="false" />
+          <Property Name="image_con" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <NavigationProperty Name="Recipies" Relationship="foodbucketModel.FK_Recipies_Countries" FromRole="Countries" ToRole="Recipies" />
+        </EntityType>
+        <EntityType Name="Recipy">
+          <Key>
+            <PropertyRef Name="id_recipe" />
+          </Key>
+          <Property Name="id_recipe" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="id_country" Type="Int32" Nullable="false" />
+          <Property Name="title" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="description" Type="String" Nullable="false" MaxLength="500" Unicode="false" FixedLength="false" />
+          <Property Name="ingredients" Type="String" Nullable="false" MaxLength="500" Unicode="false" FixedLength="false" />
+          <Property Name="preparation" Type="String" Nullable="false" MaxLength="500" Unicode="false" FixedLength="false" />
+          <Property Name="extra_description" Type="String" Nullable="false" MaxLength="500" Unicode="false" FixedLength="false" />
+          <Property Name="image_rec" Type="Binary" Nullable="false" MaxLength="Max" FixedLength="false" />
+          <NavigationProperty Name="Comments" Relationship="foodbucketModel.FK_Comments_Recipes" FromRole="Recipies" ToRole="Comments" />
+          <NavigationProperty Name="Country" Relationship="foodbucketModel.FK_Recipies_Countries" FromRole="Recipies" ToRole="Countries" />
+        </EntityType>
+        <Association Name="FK_Comments_Recipes">
+          <End Role="Recipies" Type="foodbucketModel.Recipy" Multiplicity="1" />
+          <End Role="Comments" Type="foodbucketModel.Comment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Recipies">
+              <PropertyRef Name="id_recipe" />
+            </Principal>
+            <Dependent Role="Comments">
+              <PropertyRef Name="id_recipie" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Recipies_Countries">
+          <End Role="Countries" Type="foodbucketModel.Country" Multiplicity="1" />
+          <End Role="Recipies" Type="foodbucketModel.Recipy" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Countries">
+              <PropertyRef Name="id_country" />
+            </Principal>
+            <Dependent Role="Recipies">
+              <PropertyRef Name="id_country" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="System_Users">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Username" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Password" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="RegDate" Nullable="false" Precision="3" />
+          <Property Type="String" Name="Email" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="foodbucketModelStoreContainer" CdmEntityContainer="foodbucketEntities">
+          <EntitySetMapping Name="Comments">
+            <EntityTypeMapping TypeName="foodbucketModel.Comment">
+              <MappingFragment StoreEntitySet="Comments">
+                <ScalarProperty Name="id_comment" ColumnName="id_comment" />
+                <ScalarProperty Name="comment_text" ColumnName="comment_text" />
+                <ScalarProperty Name="id_recipie" ColumnName="id_recipie" />
+                <ScalarProperty Name="author" ColumnName="author" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Countries">
+            <EntityTypeMapping TypeName="foodbucketModel.Country">
+              <MappingFragment StoreEntitySet="Countries">
+                <ScalarProperty Name="id_country" ColumnName="id_country" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="image_con" ColumnName="image_con" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Recipies">
+            <EntityTypeMapping TypeName="foodbucketModel.Recipy">
+              <MappingFragment StoreEntitySet="Recipies">
+                <ScalarProperty Name="id_recipe" ColumnName="id_recipe" />
+                <ScalarProperty Name="id_country" ColumnName="id_country" />
+                <ScalarProperty Name="title" ColumnName="title" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="ingredients" ColumnName="ingredients" />
+                <ScalarProperty Name="preparation" ColumnName="preparation" />
+                <ScalarProperty Name="extra_description" ColumnName="extra_description" />
+                <ScalarProperty Name="image_rec" ColumnName="image_rec" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="System_Users">
+            <EntityTypeMapping TypeName="foodbucketModel.System_Users">
+              <MappingFragment StoreEntitySet="System_Users">
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="RegDate" ColumnName="RegDate" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

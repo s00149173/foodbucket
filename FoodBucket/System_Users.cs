@@ -12,17 +12,12 @@ namespace FoodBucket
     using System;
     using System.Collections.Generic;
     
-    public partial class Country
+    public partial class System_Users
     {
-        public Country()
-        {
-            this.Recipies = new HashSet<Recipy>();
-        }
-    
-        public int id_country { get; set; }
-        public string name { get; set; }
-        public byte[] image_con { get; set; }
-    
-        public virtual ICollection<Recipy> Recipies { get; set; }
+        public int Id { get; set; }
+        public string Username { get; set; }
+        public string Password { get; set; }
+        public System.DateTime RegDate { get; set; }
+        public string Email { get; set; }
     }
 }
