@@ -3,25 +3,87 @@
 @{
     ViewBag.Title = "Index";
 }
+<script>
+    $(function () {
 
-@foreach (var item in Model)
+        $('#myCarousel').carousel();
+    });
+</script>
+<div class="text-center">
+@if (!Request.IsAuthenticated)
 {
-    <div class="col-md-6">
-        <div class="countryHome">
+    @Html.ActionLink("Login", "Login", "User") 
+        <span>or</span> 
+    @Html.ActionLink("Register", "Register", "User") 
+    <span>to see the most amazing recipies!</span>
+    
+} 
+</div>
 
-            <div class=" freshdesignweb">
-                <article class="border c-two" style="background-image: url(@Html.DisplayFor(modelItem => item.image_con))">
-                    <div style="opacity: 0;" class="fdw-background">                       
-                        <h4>@Html.DisplayFor(modelItem => item.name)</h4>
-
-                        <p class="fdw-port">                         
-                            @Html.ActionLink("View Recipes", "Index", "Recipes", new { id = item.id_country }, null)
-                        </p>
-                    </div>
-                </article>
+<div id="myCarousel" class="carousel " data-ride="carousel" style="max-width: 870px; margin:0 auto">
+  
+    <!-- Wrapper for slides -->
+    <div class="carousel-inner">
+            <div class="active item">
+                <img src="/Content/images/photo1.jpg" />
             </div>
+            <div class="item">
+                <img src="/Content/images/photo2.jpg" />
+            </div>
+        <div class="item">
+            <img src="/Content/images/photo3.jpg" />
         </div>
+        <div class="item">
+            <img src="/Content/images/photo4.jpg" />
+        </div>
+        <div class="item">
+            <img src="/Content/images/photo5.jpg" />
+        </div>
+        <div class="item">
+            <img src="/Content/images/photo6.jpg" />
+        </div>
+        <div class="item">
+            <img src="/Content/images/photo7.jpg" />
+        </div>
+        <div class="item">
+            <img src="/Content/images/photo8.jpg" />
+        </div>
+          <div class="item">
+                <img src="/Content/images/photo9.jpg" />
+            </div>
     </div>
+</div>
+  <!-- Controls -->
+  <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+    <span class="glyphicon glyphicon-chevron-left"></span>
+  </a>
+  <a class="right carousel-control" href="#myCarousel" data-slide="next">
+    <span class="glyphicon glyphicon-chevron-right"></span>
+  </a>
+<br/>
+<br/>
+@if (Request.IsAuthenticated)
+{
+
+    foreach (var item in Model)
+    {
+     <div class="col-md-6">
+         <div class="countryHome">
+
+             <div class=" freshdesignweb">
+                 <article class="border c-two" style="background-image: url(@Html.DisplayFor(modelItem => item.image_con))">
+                     <div style="opacity: 0;" class="fdw-background">                       
+                         <h4>@Html.DisplayFor(modelItem => item.name)</h4>
+
+                         <p class="fdw-port">                         
+                             @Html.ActionLink("View Recipes", "Index", "Recipes", new { id = item.id_country }, null)
+                         </p>
+                     </div>
+                 </article>
+             </div>
+         </div>
+     </div>
+
+    }
 
 }
-

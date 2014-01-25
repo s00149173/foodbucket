@@ -165,6 +165,15 @@
     <Content Include="Content\images\Cannoli.jpg" />
     <Content Include="Content\images\Gnocchi.jpg" />
     <Content Include="Content\images\Lucrezia.jpg" />
+    <Content Include="Content\images\photo1.jpg" />
+    <Content Include="Content\images\photo2.jpg" />
+    <Content Include="Content\images\photo3.jpg" />
+    <Content Include="Content\images\photo4.jpg" />
+    <Content Include="Content\images\photo5.jpg" />
+    <Content Include="Content\images\photo6.jpg" />
+    <Content Include="Content\images\photo7.jpg" />
+    <Content Include="Content\images\photo8.jpg" />
+    <Content Include="Content\images\photo9.jpg" />
     <Content Include="Content\images\Tuscan.jpg" />
     <Content Include="Content\style.css" />
     <Content Include="Global.asax" />
@@ -182,6 +191,7 @@
     </Content>
     <Content Include="foodbucket.edmx.diagram">
       <DependentUpon>foodbucket.edmx</DependentUpon>
+      <SubType>Designer</SubType>
     </Content>
     <Content Include="foodbucket.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
@@ -211,6 +221,7 @@
     <Content Include="Views\Recipes\Details.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\User\Login.cshtml" />
+    <Content Include="Views\User\Register.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

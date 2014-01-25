@@ -1,17 +1,13 @@
 ﻿using System.Web.Mvc;
 
 using System.Web.Security;
+using FoodBucket.Models;
 
 namespace FoodBucket.Controllers
 {
     public class UserController : Controller
     {
-        
-        //public ActionResult Index()
-        //{
-        //    return View();
-        //}
-
+      
         [HttpGet]
         public ActionResult Login()
         {
@@ -33,10 +29,24 @@ namespace FoodBucket.Controllers
             return View(user);
         }
 
+        
         public ActionResult Logout()
         {
             FormsAuthentication.SignOut();
             return RedirectToAction("Index", "Home");
         }
+        [HttpGet]
+        public ActionResult Register()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Register(User newUser)
+        {
+          //add to db and redirect to sign in 
+            return View();
+        }
+
     }
     }

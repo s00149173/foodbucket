@@ -10,6 +10,8 @@ namespace FoodBucket.Controllers
 
         public ActionResult Index(int id)
         {
+            if (!Request.IsAuthenticated)
+                return RedirectToAction("Index", "Home");
             //select all recipes for country          
             var query = db.Recipies.Where(c => c.id_country == id);
 

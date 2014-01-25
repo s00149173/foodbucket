@@ -44,7 +44,7 @@
           </Key>
           <Property Name="id_country" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="name" Type="nvarchar" Nullable="false" MaxLength="35" />
-          <Property Name="image_con" Type="image" />
+          <Property Name="image_con" Type="nchar" MaxLength="60" />
         </EntityType>
         <EntityType Name="Recipies">
           <Key>
@@ -57,7 +57,7 @@
           <Property Name="ingredients" Type="varchar" Nullable="false" MaxLength="500" />
           <Property Name="preparation" Type="varchar" Nullable="false" MaxLength="500" />
           <Property Name="extra_description" Type="varchar" Nullable="false" MaxLength="500" />
-          <Property Name="image_rec" Type="image" Nullable="false" />
+          <Property Name="image_rec" Type="nvarchar" Nullable="false" MaxLength="60" />
         </EntityType>
         <Association Name="FK_Comments_Recipes">
           <End Role="Recipies" Type="foodbucketModel.Store.Recipies" Multiplicity="1" />
@@ -117,7 +117,7 @@
           </Key>
           <Property Name="id_country" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
           <Property Name="name" Type="String" Nullable="false" MaxLength="35" Unicode="true" FixedLength="false" />
-          <Property Name="image_con" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="image_con" Type="String" />
           <NavigationProperty Name="Recipies" Relationship="foodbucketModel.FK_Recipies_Countries" FromRole="Countries" ToRole="Recipies" />
         </EntityType>
         <EntityType Name="Recipy">
@@ -131,7 +131,7 @@
           <Property Name="ingredients" Type="String" Nullable="false" MaxLength="500" Unicode="false" FixedLength="false" />
           <Property Name="preparation" Type="String" Nullable="false" MaxLength="500" Unicode="false" FixedLength="false" />
           <Property Name="extra_description" Type="String" Nullable="false" MaxLength="500" Unicode="false" FixedLength="false" />
-          <Property Name="image_rec" Type="Binary" Nullable="false" MaxLength="Max" FixedLength="false" />
+          <Property Name="image_rec" Type="String" Nullable="false" />
           <NavigationProperty Name="Comments" Relationship="foodbucketModel.FK_Comments_Recipes" FromRole="Recipies" ToRole="Comments" />
           <NavigationProperty Name="Country" Relationship="foodbucketModel.FK_Recipies_Countries" FromRole="Recipies" ToRole="Countries" />
         </EntityType>

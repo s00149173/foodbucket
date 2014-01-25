@@ -21,7 +21,7 @@ namespace FoodBucket
     
         public int id_country { get; set; }
         public string name { get; set; }
-        public byte[] image_con { get; set; }
+        public string image_con { get; set; }
     
         public virtual ICollection<Recipy> Recipies { get; set; }
     }

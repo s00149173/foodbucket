@@ -56,3 +56,4 @@ D:\FACULTATE\VS\foodbucket\FoodBucket\bin\System.Web.WebPages.Deployment.xml
 D:\FACULTATE\VS\foodbucket\FoodBucket\bin\System.Web.WebPages.Razor.xml
 D:\FACULTATE\VS\foodbucket\FoodBucket\obj\Debug\FoodBucket.dll
 D:\FACULTATE\VS\foodbucket\FoodBucket\obj\Debug\FoodBucket.pdb
+D:\FACULTATE\VS\foodbucket\FoodBucket\obj\Debug\FoodBucket.csprojResolveAssemblyReference.cache
