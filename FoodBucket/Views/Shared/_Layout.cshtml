@@ -9,7 +9,7 @@
     <link href="~/Content/style.css" rel="stylesheet" />
     <link href="~/Content/carousel.css" rel="stylesheet" />
 </head>
-<body>  
+<body>
     <div class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
@@ -26,42 +26,44 @@
                     <li><a href="#about">About</a></li>
                     <li><a href="#contact">Contact</a></li>
                 </ul>
-                 <ul class="nav navbar-nav navbar-right">
-                     @if (Request.IsAuthenticated)
-                     {
-                         <li>                             
-                             Currently logged in as:
-                             @Html.Encode(User.Identity.Name)                                                               
-                         </li>
-                         <li>@Html.ActionLink("Sign Out", "Logout", "User")</li>       
+                <ul class="nav navbar-nav navbar-right">
+                    @if (Request.IsAuthenticated)
+                    {
+                        <li>Currently logged in as:
+                             @Html.Encode(User.Identity.Name)
+                        </li>
+                        <li>@Html.ActionLink("Sign Out", "Logout", "User")</li>       
                          
-                     }
-                    else 
+                    }
+                    else
                     {
                         <li>
                             @Html.ActionLink("Register", "Register", "User")
                         </li>
                         <li>
-                             @Html.ActionLink("Sign In", "Login", "User")
+                            @Html.ActionLink("Sign In", "Login", "User")
                         </li>
                     }
-                 </ul>
-            </nav>           
+                </ul>
+            </nav>
             <!--/.navbar-collapse -->
         </div>
-    </div> 
+    </div>
     <div id="headerInfo">
         <h1>Finest Gourmet foods from around the world</h1>
-    </div>  
-    
+    </div>
+
     <div class="container">
         @RenderBody()
     </div>
-  
+
     @RenderSection("scripts", required: false)
 
-    <script src="~/Scripts/jquery.js"></script>  
+    <script src="~/Scripts/jquery.js"></script>
     <script src="~/Scripts/bootstrap.js"></script>
     <script src="~/Scripts/holder.js"></script>
+    <script src="~/Scripts/jquery.validate.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+
 </body>
 </html>

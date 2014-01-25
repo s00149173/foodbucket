@@ -1,13 +1,21 @@
 ﻿using System.Web.Mvc;
-
 using System.Web.Security;
 using FoodBucket.Models;
 
+
 namespace FoodBucket.Controllers
-{
+{   
     public class UserController : Controller
     {
-      
+        private readonly foodbucketEntities _db;
+        
+        public UserController()
+        {
+            _db = new foodbucketEntities();
+        }
+
+        
+
         [HttpGet]
         public ActionResult Login()
         {
@@ -15,7 +23,7 @@ namespace FoodBucket.Controllers
         }
  
         [HttpPost]
-        public ActionResult Login(Models.User user)
+        public ActionResult Login(User user)
         {
             if (ModelState.IsValid)
             {
@@ -42,10 +50,19 @@ namespace FoodBucket.Controllers
         }
 
         [HttpPost]
-        public ActionResult Register(User newUser)
+        public ActionResult Register(RegisterModel newUser)
         {
-          //add to db and redirect to sign in 
-            return View();
+          var user= new System_Users {Username = newUser.UserName,
+                                      Password= Models.User.Encrypt(newUser.Password),
+                                      RegDate = System.DateTime.Now,
+                                      Email = newUser.Email
+                                      };
+
+
+            _db.System_Users.Add(user);
+            _db.SaveChanges();
+            TempData["ConfirmationMessage"] = "Use your new account to login. Enjoy!";
+            return RedirectToAction("Login");
         }
 
     }

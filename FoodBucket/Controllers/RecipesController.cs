@@ -19,7 +19,7 @@ namespace FoodBucket.Controllers
             var ctry = db.Countries.SingleOrDefault(c => c.id_country == id);
             ViewBag.Country = ctry.name;
 
-            return View(query);          
+            return View(query);
         }
 
 
@@ -111,7 +111,7 @@ namespace FoodBucket.Controllers
                 return View();
             }
         }
-      
+
     }
 
     public class country
