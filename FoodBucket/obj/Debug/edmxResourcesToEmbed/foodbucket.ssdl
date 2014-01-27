@@ -2,6 +2,7 @@
 <Schema Namespace="foodbucketModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
   <EntityContainer Name="foodbucketModelStoreContainer">
     <EntitySet Name="System_Users" EntityType="foodbucketModel.Store.System_Users" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="UserData" EntityType="foodbucketModel.Store.UserData" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Comments" EntityType="foodbucketModel.Store.Comments" store:Type="Tables" Schema="foodbucket" />
     <EntitySet Name="Countries" EntityType="foodbucketModel.Store.Countries" store:Type="Tables" Schema="foodbucket" />
     <EntitySet Name="Recipies" EntityType="foodbucketModel.Store.Recipies" store:Type="Tables" Schema="foodbucket" />
@@ -13,16 +14,30 @@
       <End Role="Countries" EntitySet="Countries" />
       <End Role="Recipies" EntitySet="Recipies" />
     </AssociationSet>
+    <AssociationSet Name="FK_UserData_System_Users" Association="foodbucketModel.Store.FK_UserData_System_Users">
+      <End Role="System_Users" EntitySet="System_Users" />
+      <End Role="UserData" EntitySet="UserData" />
+    </AssociationSet>
   </EntityContainer>
   <EntityType Name="System_Users">
     <Key>
-      <PropertyRef Name="Id" />
+      <PropertyRef Name="Username" />
     </Key>
     <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
     <Property Name="Username" Type="nvarchar" Nullable="false" MaxLength="50" />
     <Property Name="Password" Type="nvarchar(max)" Nullable="false" />
     <Property Name="RegDate" Type="datetime" Nullable="false" />
     <Property Name="Email" Type="nvarchar" Nullable="false" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="UserData">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="UserName" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="FirstName" Type="nvarchar" MaxLength="50" />
+    <Property Name="LastName" Type="nvarchar" MaxLength="50" />
+    <Property Name="Photo" Type="image" />
   </EntityType>
   <EntityType Name="Comments">
     <Key>
@@ -75,6 +90,18 @@
       </Principal>
       <Dependent Role="Recipies">
         <PropertyRef Name="id_country" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserData_System_Users">
+    <End Role="System_Users" Type="foodbucketModel.Store.System_Users" Multiplicity="1" />
+    <End Role="UserData" Type="foodbucketModel.Store.UserData" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="System_Users">
+        <PropertyRef Name="Username" />
+      </Principal>
+      <Dependent Role="UserData">
+        <PropertyRef Name="UserName" />
       </Dependent>
     </ReferentialConstraint>
   </Association>

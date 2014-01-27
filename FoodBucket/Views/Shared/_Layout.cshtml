@@ -1,5 +1,4 @@
-﻿@using System.Runtime.InteropServices
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -29,10 +28,18 @@
                 <ul class="nav navbar-nav navbar-right">
                     @if (Request.IsAuthenticated)
                     {
-                        <li>Currently logged in as:
-                             @Html.Encode(User.Identity.Name)
+                        <li>
+                            <br/>
+                            Hi 
+                            @Html.Encode(User.Identity.Name) &nbsp;
+                             
                         </li>
-                        <li>@Html.ActionLink("Sign Out", "Logout", "User")</li>       
+                        <li>
+  
+                            <img class="img-responsive" src= "@Url.Action("ShowImg", "User", new {id = @User.Identity.Name } )" />
+                        </li>
+                        <li>@Html.ActionLink("Sign Out", "Logout", "User")</li>    
+   
                          
                     }
                     else

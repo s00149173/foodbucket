@@ -12,7 +12,12 @@
       <End Role="Countries" EntitySet="Countries" />
       <End Role="Recipies" EntitySet="Recipies" />
     </AssociationSet>
+    <EntitySet Name="UserDatas" EntityType="foodbucketModel.UserData" />
     <EntitySet Name="System_Users" EntityType="foodbucketModel.System_Users" />
+    <AssociationSet Name="FK_UserData_System_Users" Association="foodbucketModel.FK_UserData_System_Users">
+      <End Role="System_Users" EntitySet="System_Users" />
+      <End Role="UserData" EntitySet="UserDatas" />
+    </AssociationSet>
   </EntityContainer>
   <EntityType Name="Comment">
     <Key>
@@ -30,7 +35,7 @@
     </Key>
     <Property Name="id_country" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
     <Property Name="name" Type="String" Nullable="false" MaxLength="35" Unicode="true" FixedLength="false" />
-    <Property Name="image_con" Type="String" />
+    <Property Name="image_con" Type="String" MaxLength="60" Unicode="true" FixedLength="true" />
     <NavigationProperty Name="Recipies" Relationship="foodbucketModel.FK_Recipies_Countries" FromRole="Countries" ToRole="Recipies" />
   </EntityType>
   <EntityType Name="Recipy">
@@ -44,7 +49,7 @@
     <Property Name="ingredients" Type="String" Nullable="false" MaxLength="500" Unicode="false" FixedLength="false" />
     <Property Name="preparation" Type="String" Nullable="false" MaxLength="500" Unicode="false" FixedLength="false" />
     <Property Name="extra_description" Type="String" Nullable="false" MaxLength="500" Unicode="false" FixedLength="false" />
-    <Property Name="image_rec" Type="String" Nullable="false" />
+    <Property Name="image_rec" Type="String" Nullable="false" MaxLength="60" Unicode="true" FixedLength="false" />
     <NavigationProperty Name="Comments" Relationship="foodbucketModel.FK_Comments_Recipes" FromRole="Recipies" ToRole="Comments" />
     <NavigationProperty Name="Country" Relationship="foodbucketModel.FK_Recipies_Countries" FromRole="Recipies" ToRole="Countries" />
   </EntityType>
@@ -72,14 +77,38 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <EntityType Name="System_Users">
+  <EntityType Name="UserData">
     <Key>
       <PropertyRef Name="Id" />
+    </Key>
+    <Property Type="Int32" Name="Id" Nullable="false" />
+    <Property Type="String" Name="UserName" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="FirstName" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="LastName" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="Binary" Name="Photo" MaxLength="Max" FixedLength="false" />
+    <NavigationProperty Name="System_Users" Relationship="foodbucketModel.FK_UserData_System_Users" FromRole="UserData" ToRole="System_Users" />
+  </EntityType>
+  <EntityType Name="System_Users">
+    <Key>
+      <PropertyRef Name="Username" />
     </Key>
     <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Type="String" Name="Username" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Type="String" Name="Password" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Type="DateTime" Name="RegDate" Nullable="false" Precision="3" />
     <Property Type="String" Name="Email" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="UserDatas" Relationship="foodbucketModel.FK_UserData_System_Users" FromRole="System_Users" ToRole="UserData" />
   </EntityType>
+  <Association Name="FK_UserData_System_Users">
+    <End Type="foodbucketModel.System_Users" Role="System_Users" Multiplicity="1" />
+    <End Type="foodbucketModel.UserData" Role="UserData" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="System_Users">
+        <PropertyRef Name="Username" />
+      </Principal>
+      <Dependent Role="UserData">
+        <PropertyRef Name="UserName" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
 </Schema>

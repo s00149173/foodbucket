@@ -10,7 +10,11 @@
         <EntityTypeShape EntityType="foodbucketModel.Recipy" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
         <AssociationConnector Association="foodbucketModel.FK_Comments_Recipes" ManuallyRouted="false" />
         <AssociationConnector Association="foodbucketModel.FK_Recipies_Countries" ManuallyRouted="false" />
-        <EntityTypeShape EntityType="foodbucketModel.System_Users" Width="1.5" PointX="0.75" PointY="2.5" />
+        <EntityTypeShape EntityType="foodbucketModel.Table" Width="1.5" PointX="3" PointY="4.875" />
+        <AssociationConnector Association="foodbucketModel.FK_Table_ToTable" />
+        <EntityTypeShape EntityType="foodbucketModel.UserData" Width="1.5" PointX="0.75" PointY="2.375" />
+        <EntityTypeShape EntityType="foodbucketModel.System_Users" Width="1.5" PointX="7.125" PointY="2.5" />
+        <AssociationConnector Association="foodbucketModel.FK_UserData_System_Users" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

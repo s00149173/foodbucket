@@ -28,6 +28,7 @@ namespace FoodBucket
         public DbSet<Comment> Comments { get; set; }
         public DbSet<Country> Countries { get; set; }
         public DbSet<Recipy> Recipies { get; set; }
+        public DbSet<UserData> UserData { get; set; }
         public DbSet<System_Users> System_Users { get; set; }
     }
 }
