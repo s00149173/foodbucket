@@ -117,13 +117,13 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Comment.cs">
+    <Compile Include="Comments.cs">
       <DependentUpon>foodbucket.tt</DependentUpon>
     </Compile>
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\RecipesController.cs" />
     <Compile Include="Controllers\UserController.cs" />
-    <Compile Include="Country.cs">
+    <Compile Include="Countries.cs">
       <DependentUpon>foodbucket.tt</DependentUpon>
     </Compile>
     <Compile Include="foodbucket.Context.cs">
@@ -149,7 +149,10 @@
     <Compile Include="Models\RegisterModel.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Recipy.cs">
+    <Compile Include="Recipies.cs">
+      <DependentUpon>foodbucket.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sysdiagrams.cs">
       <DependentUpon>foodbucket.tt</DependentUpon>
     </Compile>
     <Compile Include="System_Users.cs">
@@ -200,7 +203,6 @@
     </Content>
     <Content Include="foodbucket.edmx.diagram">
       <DependentUpon>foodbucket.edmx</DependentUpon>
-      <SubType>Designer</SubType>
     </Content>
     <Content Include="foodbucket.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
@@ -240,6 +242,7 @@
     <Content Include="Views\User\Register.cshtml" />
     <Content Include="Views\UserMailer\_Layout.cshtml" />
     <Content Include="Views\UserMailer\Welcome.cshtml" />
+    <Content Include="Views\Recipes\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

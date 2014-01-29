@@ -1,0 +1,79 @@
+﻿@model FoodBucket.Recipies
+
+@{
+    ViewBag.Title = "Create";
+}
+<div class="container">
+    <h2>Insert a new Recepie</h2>
+    <br/>
+</div>
+
+@using (Html.BeginForm(FormMethod.Post))
+{
+    @Html.ValidationSummary(true)
+    <div class="row">
+        <div class=" col-md-offset-1 col-md-4">
+            <div class="form-group input-group-sm">
+               
+                @Html.LabelFor(model => model.Countries)
+
+                
+                
+                
+                
+                @Html.DropDownList("id_country",
+                new SelectList(ViewBag.countriesList2, "id", "value",0), "Select a country",
+                new { @class = "form-control " })
+                                 
+                @*
+                @Html.DropDownList("id_country", (SelectList) ViewBag.CategoryId, "--Select One--") *@
+            </div>
+            <div class="form-group input-group-sm">
+                @Html.LabelFor(model => model.title, "Title")
+
+                @Html.TextBoxFor(model => model.title, new { @class = "form-control input-sm" })
+                @Html.ValidationMessageFor(model => model.title)
+            </div>
+            
+            <div class="form-group ">
+                @Html.LabelFor(model => model.description, "Description")
+
+                @Html.TextAreaFor(model => model.description, new { @class = "form-control", rows = "3" })
+                @Html.ValidationMessageFor(model => model.description)
+            </div>
+            <div class="form-group input-group-sm">
+                <label for="register-avatar">Upload recipie image</label>
+                <input id="image-recipie" type="file" name="RecipieImage" />
+            </div>
+        </div>
+        <div class="col-md-offset-1 col-md-5">
+            <div class="form-group">
+                @Html.LabelFor(model => model.ingredients, "Ingredients")
+
+                @Html.TextAreaFor(model => model.ingredients, new { @class = "form-control", rows = "5" })
+                @Html.ValidationMessageFor(model => model.ingredients)
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.preparation, "Preparation")
+
+                @Html.TextAreaFor(model => model.preparation, new { @class = "form-control", rows = "5" })
+                @Html.ValidationMessageFor(model => model.preparation)
+            </div>
+        </div>
+    </div>
+
+
+<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+
+<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+
+<div class="container">
+    <br/>
+    <input class="btn btn-success btn-lg" type="submit" value="Save" />
+    <br/>
+    <br/>
+    @Html.ActionLink("Back to Home Page", "Index", "Home")
+</div>
+
+}
+

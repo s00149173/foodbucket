@@ -1,13 +1,10 @@
 ﻿using System;
-using System.IO;
 using System.Linq;
 using System.Web.Helpers;
 using System.Web.Mvc;
 using System.Web.Security;
 using FoodBucket.Mailers;
 using FoodBucket.Models;
-
-
 
 namespace FoodBucket.Controllers
 {

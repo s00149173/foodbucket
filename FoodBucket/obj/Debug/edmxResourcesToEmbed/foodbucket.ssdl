@@ -1,6 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="foodbucketModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
   <EntityContainer Name="foodbucketModelStoreContainer">
+    <EntitySet Name="sysdiagrams" EntityType="foodbucketModel.Store.sysdiagrams" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="System_Users" EntityType="foodbucketModel.Store.System_Users" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="UserData" EntityType="foodbucketModel.Store.UserData" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Comments" EntityType="foodbucketModel.Store.Comments" store:Type="Tables" Schema="foodbucket" />
@@ -19,6 +20,16 @@
       <End Role="UserData" EntitySet="UserData" />
     </AssociationSet>
   </EntityContainer>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" Nullable="false" MaxLength="128" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
   <EntityType Name="System_Users">
     <Key>
       <PropertyRef Name="Username" />
@@ -66,8 +77,8 @@
     <Property Name="description" Type="varchar" Nullable="false" MaxLength="500" />
     <Property Name="ingredients" Type="varchar" Nullable="false" MaxLength="500" />
     <Property Name="preparation" Type="varchar" Nullable="false" MaxLength="500" />
-    <Property Name="extra_description" Type="varchar" Nullable="false" MaxLength="500" />
-    <Property Name="image_rec" Type="nvarchar" Nullable="false" MaxLength="60" />
+    <Property Name="extra_description" Type="varchar" MaxLength="500" />
+    <Property Name="image_rec" Type="nvarchar" MaxLength="60" />
   </EntityType>
   <Association Name="FK_Comments_Recipes">
     <End Role="Recipies" Type="foodbucketModel.Store.Recipies" Multiplicity="1" />

@@ -24,6 +24,10 @@
                     <li class="active"><a href="~/Home">Home</a></li>
                     <li><a href="#about">About</a></li>
                     <li><a href="#contact">Contact</a></li>
+                    @if (Request.IsAuthenticated)
+                    {
+                        <li>@Html.ActionLink("Add Recipie", "Create", "Recipes")</li>
+                    }
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     @if (Request.IsAuthenticated)

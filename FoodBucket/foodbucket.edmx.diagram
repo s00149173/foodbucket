@@ -4,17 +4,16 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="b07977a6be5949e8a07dab98099d2c2a" Name="Diagram1">
-        <EntityTypeShape EntityType="foodbucketModel.Comment" Width="1.5" PointX="5.25" PointY="1.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="foodbucketModel.Country" Width="1.5" PointX="0.75" PointY="0.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="foodbucketModel.Recipy" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+      <Diagram DiagramId="9158f43fae1a43099a592968372004f7" Name="Diagram1">
+        <EntityTypeShape EntityType="foodbucketModel.sysdiagrams" Width="1.5" PointX="5.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="foodbucketModel.System_Users" Width="1.5" PointX="0.75" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="foodbucketModel.UserData" Width="1.5" PointX="3" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="foodbucketModel.Comments" Width="1.5" PointX="5.25" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="foodbucketModel.Countries" Width="1.5" PointX="0.75" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="foodbucketModel.Recipies" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <AssociationConnector Association="foodbucketModel.FK_UserData_System_Users" ManuallyRouted="false" />
         <AssociationConnector Association="foodbucketModel.FK_Comments_Recipes" ManuallyRouted="false" />
         <AssociationConnector Association="foodbucketModel.FK_Recipies_Countries" ManuallyRouted="false" />
-        <EntityTypeShape EntityType="foodbucketModel.Table" Width="1.5" PointX="3" PointY="4.875" />
-        <AssociationConnector Association="foodbucketModel.FK_Table_ToTable" />
-        <EntityTypeShape EntityType="foodbucketModel.UserData" Width="1.5" PointX="0.75" PointY="2.375" />
-        <EntityTypeShape EntityType="foodbucketModel.System_Users" Width="1.5" PointX="7.125" PointY="2.5" />
-        <AssociationConnector Association="foodbucketModel.FK_UserData_System_Users" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

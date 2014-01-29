@@ -6,6 +6,7 @@
     <edmx:StorageModels>
     <Schema Namespace="foodbucketModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityContainer Name="foodbucketModelStoreContainer">
+          <EntitySet Name="sysdiagrams" EntityType="foodbucketModel.Store.sysdiagrams" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="System_Users" EntityType="foodbucketModel.Store.System_Users" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="UserData" EntityType="foodbucketModel.Store.UserData" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Comments" EntityType="foodbucketModel.Store.Comments" store:Type="Tables" Schema="foodbucket" />
@@ -24,6 +25,16 @@
             <End Role="UserData" EntitySet="UserData" />
           </AssociationSet>
         </EntityContainer>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" Nullable="false" MaxLength="128" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
         <EntityType Name="System_Users">
           <Key>
             <PropertyRef Name="Username" />
@@ -71,8 +82,8 @@
           <Property Name="description" Type="varchar" Nullable="false" MaxLength="500" />
           <Property Name="ingredients" Type="varchar" Nullable="false" MaxLength="500" />
           <Property Name="preparation" Type="varchar" Nullable="false" MaxLength="500" />
-          <Property Name="extra_description" Type="varchar" Nullable="false" MaxLength="500" />
-          <Property Name="image_rec" Type="nvarchar" Nullable="false" MaxLength="60" />
+          <Property Name="extra_description" Type="varchar" MaxLength="500" />
+          <Property Name="image_rec" Type="nvarchar" MaxLength="60" />
         </EntityType>
         <Association Name="FK_Comments_Recipes">
           <End Role="Recipies" Type="foodbucketModel.Store.Recipies" Multiplicity="1" />
@@ -115,9 +126,16 @@
     <edmx:ConceptualModels>
       <Schema Namespace="foodbucketModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityContainer Name="foodbucketEntities" p1:LazyLoadingEnabled="true">
-          <EntitySet Name="Comments" EntityType="foodbucketModel.Comment" />
-          <EntitySet Name="Countries" EntityType="foodbucketModel.Country" />
-          <EntitySet Name="Recipies" EntityType="foodbucketModel.Recipy" />
+          <EntitySet Name="sysdiagrams" EntityType="foodbucketModel.sysdiagrams" />
+          <EntitySet Name="System_Users" EntityType="foodbucketModel.System_Users" />
+          <EntitySet Name="UserData" EntityType="foodbucketModel.UserData" />
+          <EntitySet Name="Comments" EntityType="foodbucketModel.Comments" />
+          <EntitySet Name="Countries" EntityType="foodbucketModel.Countries" />
+          <EntitySet Name="Recipies" EntityType="foodbucketModel.Recipies" />
+          <AssociationSet Name="FK_UserData_System_Users" Association="foodbucketModel.FK_UserData_System_Users">
+            <End Role="System_Users" EntitySet="System_Users" />
+            <End Role="UserData" EntitySet="UserData" />
+          </AssociationSet>
           <AssociationSet Name="FK_Comments_Recipes" Association="foodbucketModel.FK_Comments_Recipes">
             <End Role="Recipies" EntitySet="Recipies" />
             <End Role="Comments" EntitySet="Comments" />
@@ -126,14 +144,40 @@
             <End Role="Countries" EntitySet="Countries" />
             <End Role="Recipies" EntitySet="Recipies" />
           </AssociationSet>
-          <EntitySet Name="UserDatas" EntityType="foodbucketModel.UserData" />
-          <EntitySet Name="System_Users" EntityType="foodbucketModel.System_Users" />
-          <AssociationSet Name="FK_UserData_System_Users" Association="foodbucketModel.FK_UserData_System_Users">
-            <End Role="System_Users" EntitySet="System_Users" />
-            <End Role="UserData" EntitySet="UserDatas" />
-          </AssociationSet>
         </EntityContainer>
-        <EntityType Name="Comment">
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" Nullable="false" MaxLength="128" Unicode="true" FixedLength="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="System_Users">
+          <Key>
+            <PropertyRef Name="Username" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="Username" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Password" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="RegDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Email" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="UserData" Relationship="foodbucketModel.FK_UserData_System_Users" FromRole="System_Users" ToRole="UserData" />
+        </EntityType>
+        <EntityType Name="UserData">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="UserName" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="FirstName" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="LastName" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Photo" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <NavigationProperty Name="System_Users" Relationship="foodbucketModel.FK_UserData_System_Users" FromRole="UserData" ToRole="System_Users" />
+        </EntityType>
+        <EntityType Name="Comments">
           <Key>
             <PropertyRef Name="id_comment" />
           </Key>
@@ -141,9 +185,9 @@
           <Property Name="comment_text" Type="String" Nullable="false" MaxLength="500" Unicode="false" FixedLength="false" />
           <Property Name="id_recipie" Type="Int32" Nullable="false" />
           <Property Name="author" Type="String" Nullable="false" MaxLength="500" Unicode="false" FixedLength="false" />
-          <NavigationProperty Name="Recipy" Relationship="foodbucketModel.FK_Comments_Recipes" FromRole="Comments" ToRole="Recipies" />
+          <NavigationProperty Name="Recipies" Relationship="foodbucketModel.FK_Comments_Recipes" FromRole="Comments" ToRole="Recipies" />
         </EntityType>
-        <EntityType Name="Country">
+        <EntityType Name="Countries">
           <Key>
             <PropertyRef Name="id_country" />
           </Key>
@@ -152,7 +196,7 @@
           <Property Name="image_con" Type="String" MaxLength="60" Unicode="true" FixedLength="true" />
           <NavigationProperty Name="Recipies" Relationship="foodbucketModel.FK_Recipies_Countries" FromRole="Countries" ToRole="Recipies" />
         </EntityType>
-        <EntityType Name="Recipy">
+        <EntityType Name="Recipies">
           <Key>
             <PropertyRef Name="id_recipe" />
           </Key>
@@ -162,14 +206,26 @@
           <Property Name="description" Type="String" Nullable="false" MaxLength="500" Unicode="false" FixedLength="false" />
           <Property Name="ingredients" Type="String" Nullable="false" MaxLength="500" Unicode="false" FixedLength="false" />
           <Property Name="preparation" Type="String" Nullable="false" MaxLength="500" Unicode="false" FixedLength="false" />
-          <Property Name="extra_description" Type="String" Nullable="false" MaxLength="500" Unicode="false" FixedLength="false" />
-          <Property Name="image_rec" Type="String" Nullable="false" MaxLength="60" Unicode="true" FixedLength="false" />
+          <Property Name="extra_description" Type="String" MaxLength="500" Unicode="false" FixedLength="false" />
+          <Property Name="image_rec" Type="String" MaxLength="60" Unicode="true" FixedLength="false" />
           <NavigationProperty Name="Comments" Relationship="foodbucketModel.FK_Comments_Recipes" FromRole="Recipies" ToRole="Comments" />
-          <NavigationProperty Name="Country" Relationship="foodbucketModel.FK_Recipies_Countries" FromRole="Recipies" ToRole="Countries" />
+          <NavigationProperty Name="Countries" Relationship="foodbucketModel.FK_Recipies_Countries" FromRole="Recipies" ToRole="Countries" />
         </EntityType>
+        <Association Name="FK_UserData_System_Users">
+          <End Role="System_Users" Type="foodbucketModel.System_Users" Multiplicity="1" />
+          <End Role="UserData" Type="foodbucketModel.UserData" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="System_Users">
+              <PropertyRef Name="Username" />
+            </Principal>
+            <Dependent Role="UserData">
+              <PropertyRef Name="UserName" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Comments_Recipes">
-          <End Role="Recipies" Type="foodbucketModel.Recipy" Multiplicity="1" />
-          <End Role="Comments" Type="foodbucketModel.Comment" Multiplicity="*" />
+          <End Role="Recipies" Type="foodbucketModel.Recipies" Multiplicity="1" />
+          <End Role="Comments" Type="foodbucketModel.Comments" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Recipies">
               <PropertyRef Name="id_recipe" />
@@ -180,8 +236,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Recipies_Countries">
-          <End Role="Countries" Type="foodbucketModel.Country" Multiplicity="1" />
-          <End Role="Recipies" Type="foodbucketModel.Recipy" Multiplicity="*" />
+          <End Role="Countries" Type="foodbucketModel.Countries" Multiplicity="1" />
+          <End Role="Recipies" Type="foodbucketModel.Recipies" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Countries">
               <PropertyRef Name="id_country" />
@@ -191,48 +247,47 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityType Name="UserData">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Type="Int32" Name="Id" Nullable="false" />
-          <Property Type="String" Name="UserName" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="FirstName" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="LastName" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Type="Binary" Name="Photo" MaxLength="Max" FixedLength="false" />
-          <NavigationProperty Name="System_Users" Relationship="foodbucketModel.FK_UserData_System_Users" FromRole="UserData" ToRole="System_Users" />
-        </EntityType>
-        <EntityType Name="System_Users">
-          <Key>
-            <PropertyRef Name="Username" />
-          </Key>
-          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="String" Name="Username" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="Password" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Type="DateTime" Name="RegDate" Nullable="false" Precision="3" />
-          <Property Type="String" Name="Email" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="UserDatas" Relationship="foodbucketModel.FK_UserData_System_Users" FromRole="System_Users" ToRole="UserData" />
-        </EntityType>
-        <Association Name="FK_UserData_System_Users">
-          <End Type="foodbucketModel.System_Users" Role="System_Users" Multiplicity="1" />
-          <End Type="foodbucketModel.UserData" Role="UserData" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="System_Users">
-              <PropertyRef Name="Username" />
-            </Principal>
-            <Dependent Role="UserData">
-              <PropertyRef Name="UserName" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="foodbucketModelStoreContainer" CdmEntityContainer="foodbucketEntities">
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="foodbucketModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="System_Users">
+            <EntityTypeMapping TypeName="foodbucketModel.System_Users">
+              <MappingFragment StoreEntitySet="System_Users">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="RegDate" ColumnName="RegDate" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserData">
+            <EntityTypeMapping TypeName="foodbucketModel.UserData">
+              <MappingFragment StoreEntitySet="UserData">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="Photo" ColumnName="Photo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Comments">
-            <EntityTypeMapping TypeName="foodbucketModel.Comment">
+            <EntityTypeMapping TypeName="foodbucketModel.Comments">
               <MappingFragment StoreEntitySet="Comments">
                 <ScalarProperty Name="id_comment" ColumnName="id_comment" />
                 <ScalarProperty Name="comment_text" ColumnName="comment_text" />
@@ -242,7 +297,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Countries">
-            <EntityTypeMapping TypeName="foodbucketModel.Country">
+            <EntityTypeMapping TypeName="foodbucketModel.Countries">
               <MappingFragment StoreEntitySet="Countries">
                 <ScalarProperty Name="id_country" ColumnName="id_country" />
                 <ScalarProperty Name="name" ColumnName="name" />
@@ -251,7 +306,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Recipies">
-            <EntityTypeMapping TypeName="foodbucketModel.Recipy">
+            <EntityTypeMapping TypeName="foodbucketModel.Recipies">
               <MappingFragment StoreEntitySet="Recipies">
                 <ScalarProperty Name="id_recipe" ColumnName="id_recipe" />
                 <ScalarProperty Name="id_country" ColumnName="id_country" />
@@ -261,28 +316,6 @@
                 <ScalarProperty Name="preparation" ColumnName="preparation" />
                 <ScalarProperty Name="extra_description" ColumnName="extra_description" />
                 <ScalarProperty Name="image_rec" ColumnName="image_rec" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="UserDatas">
-            <EntityTypeMapping TypeName="foodbucketModel.UserData">
-              <MappingFragment StoreEntitySet="UserData">
-                <ScalarProperty Name="Photo" ColumnName="Photo" />
-                <ScalarProperty Name="LastName" ColumnName="LastName" />
-                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
-                <ScalarProperty Name="UserName" ColumnName="UserName" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="System_Users">
-            <EntityTypeMapping TypeName="foodbucketModel.System_Users">
-              <MappingFragment StoreEntitySet="System_Users">
-                <ScalarProperty Name="Email" ColumnName="Email" />
-                <ScalarProperty Name="RegDate" ColumnName="RegDate" />
-                <ScalarProperty Name="Password" ColumnName="Password" />
-                <ScalarProperty Name="Username" ColumnName="Username" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -300,7 +333,7 @@
     <Options>
       <DesignerInfoPropertySet>
         <DesignerProperty Name="ValidateOnBuild" Value="true" />
-        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
         <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
         <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
       </DesignerInfoPropertySet>

@@ -1,4 +1,7 @@
-﻿using System.Linq;
+﻿using System.Data.Entity;
+using System.Data.Entity.Validation;
+using System.Linq;
+using System.Text;
 using System.Web.Mvc;
 namespace FoodBucket.Controllers
 {
@@ -12,8 +15,9 @@ namespace FoodBucket.Controllers
         {
             if (!Request.IsAuthenticated)
                 return RedirectToAction("Index", "Home");
-            //select all recipes for country          
-            var query = db.Recipies.Where(c => c.id_country == id);
+            //select all recipes for country
+
+          var query = db.Recipies.Where(c => c.id_country == id);
 
             //get country from country table
             var ctry = db.Countries.SingleOrDefault(c => c.id_country == id);
@@ -39,6 +43,14 @@ namespace FoodBucket.Controllers
 
         public ActionResult Create()
         {
+            ViewBag.countriesList2 = db.Countries.Select(c => new {id=c.id_country, value = c.name} ).Distinct();
+            //ViewBag.countriesList = new SelectList(db.Countries.OrderBy(g => g.name), "id_country", "name", 0);
+
+            //var query = db.Countries.Select(c => new { c.id_country, c.name});
+            //ViewBag.CategoryId = new SelectList(query.AsEnumerable(), "id_country", "name");
+          
+            if (!Request.IsAuthenticated)
+                return RedirectToAction("Index", "Home");
             return View();
         }
 
@@ -46,13 +58,16 @@ namespace FoodBucket.Controllers
         // POST: /Recipes/Create
 
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public ActionResult Create(Recipies rec)
         {
             try
             {
+                db.Recipies.Add(rec);
+                db.SaveChanges();
+                
                 // TODO: Add insert logic here
 
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", "Recipes", new{ id= rec.id_country});
             }
             catch
             {

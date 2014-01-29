@@ -25,10 +25,11 @@ namespace FoodBucket
             throw new UnintentionalCodeFirstException();
         }
     
-        public DbSet<Comment> Comments { get; set; }
-        public DbSet<Country> Countries { get; set; }
-        public DbSet<Recipy> Recipies { get; set; }
-        public DbSet<UserData> UserData { get; set; }
+        public DbSet<sysdiagrams> sysdiagrams { get; set; }
         public DbSet<System_Users> System_Users { get; set; }
+        public DbSet<UserData> UserData { get; set; }
+        public DbSet<Comments> Comments { get; set; }
+        public DbSet<Countries> Countries { get; set; }
+        public DbSet<Recipies> Recipies { get; set; }
     }
 }
