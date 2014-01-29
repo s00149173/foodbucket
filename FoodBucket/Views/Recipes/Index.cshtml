@@ -20,7 +20,8 @@
                  </blockquote>
         </div>
         <div class="col-md-4">
-            <img  src="~/@Html.DisplayFor(modelItem => item.image_rec)" />
+            @*<img  src="~/@Html.DisplayFor(modelItem => item.image_rec)" />*@
+            <img class="img-responsive" src="@Url.Action("ShowImg", "Recipes", new {id=item.id_recipe})"/>
         </div>
 
 

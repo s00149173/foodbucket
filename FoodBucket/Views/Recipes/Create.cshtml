@@ -1,4 +1,4 @@
-﻿@model FoodBucket.Recipies
+﻿@model FoodBucket.Models.AddRecipieModel
 
 @{
     ViewBag.Title = "Create";
@@ -8,19 +8,12 @@
     <br/>
 </div>
 
-@using (Html.BeginForm(FormMethod.Post))
+@using (Html.BeginForm("Create",null,  FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     @Html.ValidationSummary(true)
     <div class="row">
         <div class=" col-md-offset-1 col-md-4">
             <div class="form-group input-group-sm">
-               
-                @Html.LabelFor(model => model.Countries)
-
-                
-                
-                
-                
                 @Html.DropDownList("id_country",
                 new SelectList(ViewBag.countriesList2, "id", "value",0), "Select a country",
                 new { @class = "form-control " })
@@ -42,8 +35,8 @@
                 @Html.ValidationMessageFor(model => model.description)
             </div>
             <div class="form-group input-group-sm">
-                <label for="register-avatar">Upload recipie image</label>
-                <input id="image-recipie" type="file" name="RecipieImage" />
+                <label for="image-">Upload recipie image</label>
+                <input id="image-recipie" type="file" name="ImageRec" />
             </div>
         </div>
         <div class="col-md-offset-1 col-md-5">
@@ -63,9 +56,6 @@
     </div>
 
 
-<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
-
-<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
 
 <div class="container">
     <br/>

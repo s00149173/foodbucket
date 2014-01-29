@@ -83,7 +83,7 @@
           <Property Name="ingredients" Type="varchar" Nullable="false" MaxLength="500" />
           <Property Name="preparation" Type="varchar" Nullable="false" MaxLength="500" />
           <Property Name="extra_description" Type="varchar" MaxLength="500" />
-          <Property Name="image_rec" Type="nvarchar" MaxLength="60" />
+          <Property Name="image_rec" Type="image" />
         </EntityType>
         <Association Name="FK_Comments_Recipes">
           <End Role="Recipies" Type="foodbucketModel.Store.Recipies" Multiplicity="1" />
@@ -207,7 +207,7 @@
           <Property Name="ingredients" Type="String" Nullable="false" MaxLength="500" Unicode="false" FixedLength="false" />
           <Property Name="preparation" Type="String" Nullable="false" MaxLength="500" Unicode="false" FixedLength="false" />
           <Property Name="extra_description" Type="String" MaxLength="500" Unicode="false" FixedLength="false" />
-          <Property Name="image_rec" Type="String" MaxLength="60" Unicode="true" FixedLength="false" />
+          <Property Name="image_rec" Type="Binary" />
           <NavigationProperty Name="Comments" Relationship="foodbucketModel.FK_Comments_Recipes" FromRole="Recipies" ToRole="Comments" />
           <NavigationProperty Name="Countries" Relationship="foodbucketModel.FK_Recipies_Countries" FromRole="Recipies" ToRole="Countries" />
         </EntityType>

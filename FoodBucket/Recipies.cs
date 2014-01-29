@@ -26,7 +26,7 @@ namespace FoodBucket
         public string ingredients { get; set; }
         public string preparation { get; set; }
         public string extra_description { get; set; }
-        public string image_rec { get; set; }
+        public byte[] image_rec { get; set; }
     
         public virtual ICollection<Comments> Comments { get; set; }
         public virtual Countries Countries { get; set; }

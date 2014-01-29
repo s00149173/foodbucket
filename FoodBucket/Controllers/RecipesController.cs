@@ -3,6 +3,10 @@ using System.Data.Entity.Validation;
 using System.Linq;
 using System.Text;
 using System.Web.Mvc;
+using FoodBucket.Models;
+using System.Web;
+using System.Web.Helpers;
+
 namespace FoodBucket.Controllers
 {
     public class RecipesController : Controller
@@ -58,10 +62,21 @@ namespace FoodBucket.Controllers
         // POST: /Recipes/Create
 
         [HttpPost]
-        public ActionResult Create(Recipies rec)
+        public ActionResult Create(AddRecipieModel recep)
         {
+            var rec = new Recipies
+            {
+                id_country = recep.id_country,
+                description = recep.description,
+                image_rec = ConvertImage(recep.ImageRec),
+                title = recep.title,
+                ingredients = recep.ingredients,
+                preparation = recep.preparation
+            };
+
             try
             {
+                
                 db.Recipies.Add(rec);
                 db.SaveChanges();
                 
@@ -71,12 +86,43 @@ namespace FoodBucket.Controllers
             }
             catch
             {
-                return View();
+                return RedirectToAction("Create", "Recipes");
             }
         }
 
         //
         // GET: /Recipes/Edit/5
+        private static byte[] ConvertImage(HttpPostedFileBase newImage)
+        {
+
+
+            if (newImage != null && newImage.ContentLength > 0)
+            {
+                var img = new WebImage(newImage.InputStream);
+                if (img.Width > 255 || img.Height > 170)
+                    img.Resize(255, 170, true, true);
+                return img.GetBytes();
+            }
+
+     
+            return null;
+        }
+
+        public void ShowImg(int id)
+        {
+
+            byte[] image = db.Recipies.Find(id).image_rec;
+
+            if (image != null)
+            {
+                Response.Buffer = true;
+                Response.Clear();
+                Response.ContentType = "image/gif";
+                Response.BinaryWrite(image);
+                Response.End();
+
+            }
+        }
 
         public ActionResult Edit(int id)
         {
