@@ -78,11 +78,11 @@
     <Property Name="id_recipe" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
     <Property Name="id_country" Type="Int32" Nullable="false" />
     <Property Name="title" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
-    <Property Name="description" Type="String" Nullable="false" MaxLength="500" Unicode="false" FixedLength="false" />
-    <Property Name="ingredients" Type="String" Nullable="false" MaxLength="500" Unicode="false" FixedLength="false" />
-    <Property Name="preparation" Type="String" Nullable="false" MaxLength="500" Unicode="false" FixedLength="false" />
-    <Property Name="extra_description" Type="String" MaxLength="500" Unicode="false" FixedLength="false" />
-    <Property Name="image_rec" Type="Binary" />
+    <Property Name="description" Type="String" Nullable="false" MaxLength="8000" Unicode="false" FixedLength="false" />
+    <Property Name="ingredients" Type="String" Nullable="false" MaxLength="8000" Unicode="false" FixedLength="false" />
+    <Property Name="preparation" Type="String" Nullable="false" MaxLength="8000" Unicode="false" FixedLength="false" />
+    <Property Name="extra_description" Type="String" MaxLength="8000" Unicode="false" FixedLength="false" />
+    <Property Name="image_rec" Type="Binary" MaxLength="Max" FixedLength="false" />
     <NavigationProperty Name="Comments" Relationship="foodbucketModel.FK_Comments_Recipes" FromRole="Recipies" ToRole="Comments" />
     <NavigationProperty Name="Countries" Relationship="foodbucketModel.FK_Recipies_Countries" FromRole="Recipies" ToRole="Countries" />
   </EntityType>

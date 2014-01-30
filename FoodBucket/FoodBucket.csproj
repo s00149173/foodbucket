@@ -167,6 +167,10 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Content Include="App_Data\foodbucket.mdf" />
+    <Content Include="App_Data\foodbucket_log.ldf">
+      <DependentUpon>foodbucket.mdf</DependentUpon>
+    </Content>
     <Content Include="Content\bootstrap\bootstrap-theme.css" />
     <Content Include="Content\bootstrap\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap\bootstrap.css" />
@@ -251,7 +255,6 @@
     <Content Include="Views\UserMailer\newRecipie.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App_Data\" />
     <Folder Include="Content\recipeImg\" />
   </ItemGroup>
   <ItemGroup>

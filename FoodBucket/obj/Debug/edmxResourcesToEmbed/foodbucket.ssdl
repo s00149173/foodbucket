@@ -74,10 +74,10 @@
     <Property Name="id_recipe" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
     <Property Name="id_country" Type="int" Nullable="false" />
     <Property Name="title" Type="varchar" Nullable="false" MaxLength="50" />
-    <Property Name="description" Type="varchar" Nullable="false" MaxLength="500" />
-    <Property Name="ingredients" Type="varchar" Nullable="false" MaxLength="500" />
-    <Property Name="preparation" Type="varchar" Nullable="false" MaxLength="500" />
-    <Property Name="extra_description" Type="varchar" MaxLength="500" />
+    <Property Name="description" Type="varchar" Nullable="false" />
+    <Property Name="ingredients" Type="varchar" Nullable="false" />
+    <Property Name="preparation" Type="varchar" Nullable="false" />
+    <Property Name="extra_description" Type="varchar" />
     <Property Name="image_rec" Type="image" />
   </EntityType>
   <Association Name="FK_Comments_Recipes">
