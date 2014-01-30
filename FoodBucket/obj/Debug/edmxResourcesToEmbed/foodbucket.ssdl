@@ -78,7 +78,7 @@
     <Property Name="ingredients" Type="varchar" Nullable="false" MaxLength="500" />
     <Property Name="preparation" Type="varchar" Nullable="false" MaxLength="500" />
     <Property Name="extra_description" Type="varchar" MaxLength="500" />
-    <Property Name="image_rec" Type="nvarchar" MaxLength="60" />
+    <Property Name="image_rec" Type="image" />
   </EntityType>
   <Association Name="FK_Comments_Recipes">
     <End Role="Recipies" Type="foodbucketModel.Store.Recipies" Multiplicity="1" />

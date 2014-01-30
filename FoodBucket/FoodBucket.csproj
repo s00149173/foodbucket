@@ -171,6 +171,8 @@
     <Content Include="Content\bootstrap\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap\bootstrap.css" />
     <Content Include="Content\bootstrap\bootstrap.min.css" />
+    <Content Include="Content\countyImg\Poland.jpg" />
+    <Content Include="Content\countyImg\Portugual.jpg" />
     <Content Include="Content\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Content\images\cooking.png" />
     <Content Include="Content\images\img.png" />
@@ -225,7 +227,9 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\packed.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -244,10 +248,10 @@
     <Content Include="Views\UserMailer\_Layout.cshtml" />
     <Content Include="Views\UserMailer\Welcome.cshtml" />
     <Content Include="Views\Recipes\Create.cshtml" />
+    <Content Include="Views\UserMailer\newRecipie.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Content\countyImg\" />
     <Folder Include="Content\recipeImg\" />
   </ItemGroup>
   <ItemGroup>

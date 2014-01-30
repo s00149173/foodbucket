@@ -42,7 +42,7 @@
   
                             <img class="img-responsive" src= "@Url.Action("ShowImg", "User", new {id = @User.Identity.Name } )" />
                         </li>
-                        <li>@Html.ActionLink("Sign Out", "Logout", "User")</li>    
+                        <li>@Html.ActionLink("Logout", "Logout", "User")</li>    
    
                          
                     }
@@ -52,7 +52,7 @@
                             @Html.ActionLink("Register", "Register", "User")
                         </li>
                         <li>
-                            @Html.ActionLink("Sign In", "Login", "User")
+                            @Html.ActionLink("Login", "Login", "User")
                         </li>
                     }
                 </ul>

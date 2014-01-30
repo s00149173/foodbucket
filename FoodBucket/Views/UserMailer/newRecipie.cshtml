@@ -1,0 +1,24 @@
+﻿@{
+    Layout = null;
+}
+
+<div class="container alert-success">
+    <div class="text-center">
+        <img src="/Content/images/logo.png" />
+    </div>
+    <h3>Hi dear Foodbucket user! </h3>
+    
+    <h2>We have great news for you :D</h2>
+    
+    A new recipie was added to our site:
+    @ViewBag.rec.title
+    <br/>
+    @ViewBag.rec.description
+    <br/>
+    Comon and take a look:
+    @Html.ActionLink("See Recipie", "Details", "Recipes",null, new {id=@ViewBag.rec.id_recipe})
+    <br/>
+    Enjoy!     
+    <h3>Happy cooking,</h3>
+    <h3>The Foodbucket Team</h3>
+</div>

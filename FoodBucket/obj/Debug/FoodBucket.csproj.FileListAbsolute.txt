@@ -58,3 +58,62 @@ D:\FACULTATE\VS\foodbucket\FoodBucket\bin\System.Web.WebPages.Razor.xml
 D:\FACULTATE\VS\foodbucket\FoodBucket\obj\Debug\FoodBucket.dll
 D:\FACULTATE\VS\foodbucket\FoodBucket\obj\Debug\FoodBucket.pdb
 D:\FACULTATE\VS\foodbucket\FoodBucket\obj\Debug\FoodBucket.csprojResolveAssemblyReference.cache
+C:\Users\MNLyle\Desktop\foodbucket\FoodBucket\obj\Debug\FoodBucket.csprojResolveAssemblyReference.cache
+C:\Users\MNLyle\Desktop\foodbucket\FoodBucket\bin\FoodBucket.dll
+C:\Users\MNLyle\Desktop\foodbucket\FoodBucket\bin\FoodBucket.pdb
+C:\Users\MNLyle\Desktop\foodbucket\FoodBucket\bin\EntityFramework.dll
+C:\Users\MNLyle\Desktop\foodbucket\FoodBucket\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\MNLyle\Desktop\foodbucket\FoodBucket\bin\Microsoft.Web.Mvc.FixedDisplayModes.dll
+C:\Users\MNLyle\Desktop\foodbucket\FoodBucket\bin\Mvc.Mailer.dll
+C:\Users\MNLyle\Desktop\foodbucket\FoodBucket\bin\Newtonsoft.Json.dll
+C:\Users\MNLyle\Desktop\foodbucket\FoodBucket\bin\System.Net.Http.Formatting.dll
+C:\Users\MNLyle\Desktop\foodbucket\FoodBucket\bin\System.Web.Helpers.dll
+C:\Users\MNLyle\Desktop\foodbucket\FoodBucket\bin\System.Web.Http.dll
+C:\Users\MNLyle\Desktop\foodbucket\FoodBucket\bin\System.Web.Http.WebHost.dll
+C:\Users\MNLyle\Desktop\foodbucket\FoodBucket\bin\System.Web.Mvc.dll
+C:\Users\MNLyle\Desktop\foodbucket\FoodBucket\bin\System.Web.Razor.dll
+C:\Users\MNLyle\Desktop\foodbucket\FoodBucket\bin\System.Web.WebPages.Deployment.dll
+C:\Users\MNLyle\Desktop\foodbucket\FoodBucket\bin\System.Web.WebPages.dll
+C:\Users\MNLyle\Desktop\foodbucket\FoodBucket\bin\System.Web.WebPages.Razor.dll
+C:\Users\MNLyle\Desktop\foodbucket\FoodBucket\bin\EntityFramework.xml
+C:\Users\MNLyle\Desktop\foodbucket\FoodBucket\bin\Newtonsoft.Json.xml
+C:\Users\MNLyle\Desktop\foodbucket\FoodBucket\bin\System.Net.Http.Formatting.xml
+C:\Users\MNLyle\Desktop\foodbucket\FoodBucket\bin\System.Web.Helpers.xml
+C:\Users\MNLyle\Desktop\foodbucket\FoodBucket\bin\System.Web.Http.xml
+C:\Users\MNLyle\Desktop\foodbucket\FoodBucket\bin\System.Web.Http.WebHost.xml
+C:\Users\MNLyle\Desktop\foodbucket\FoodBucket\bin\System.Web.Mvc.xml
+C:\Users\MNLyle\Desktop\foodbucket\FoodBucket\bin\System.Web.Razor.xml
+C:\Users\MNLyle\Desktop\foodbucket\FoodBucket\bin\System.Web.WebPages.xml
+C:\Users\MNLyle\Desktop\foodbucket\FoodBucket\bin\System.Web.WebPages.Deployment.xml
+C:\Users\MNLyle\Desktop\foodbucket\FoodBucket\bin\System.Web.WebPages.Razor.xml
+C:\Users\MNLyle\Desktop\foodbucket\FoodBucket\obj\Debug\FoodBucket.dll
+C:\Users\MNLyle\Desktop\foodbucket\FoodBucket\obj\Debug\FoodBucket.pdb
+C:\Users\MNLyle\Desktop\food2\foodbucket - SMTP error\FoodBucket\bin\System.Web.Razor.xml
+C:\Users\MNLyle\Desktop\food2\foodbucket - SMTP error\FoodBucket\bin\FoodBucket.dll
+C:\Users\MNLyle\Desktop\food2\foodbucket - SMTP error\FoodBucket\bin\FoodBucket.pdb
+C:\Users\MNLyle\Desktop\food2\foodbucket - SMTP error\FoodBucket\bin\EntityFramework.dll
+C:\Users\MNLyle\Desktop\food2\foodbucket - SMTP error\FoodBucket\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\MNLyle\Desktop\food2\foodbucket - SMTP error\FoodBucket\bin\Microsoft.Web.Mvc.FixedDisplayModes.dll
+C:\Users\MNLyle\Desktop\food2\foodbucket - SMTP error\FoodBucket\bin\Mvc.Mailer.dll
+C:\Users\MNLyle\Desktop\food2\foodbucket - SMTP error\FoodBucket\bin\Newtonsoft.Json.dll
+C:\Users\MNLyle\Desktop\food2\foodbucket - SMTP error\FoodBucket\bin\System.Net.Http.Formatting.dll
+C:\Users\MNLyle\Desktop\food2\foodbucket - SMTP error\FoodBucket\bin\System.Web.Helpers.dll
+C:\Users\MNLyle\Desktop\food2\foodbucket - SMTP error\FoodBucket\bin\System.Web.Http.dll
+C:\Users\MNLyle\Desktop\food2\foodbucket - SMTP error\FoodBucket\bin\System.Web.Http.WebHost.dll
+C:\Users\MNLyle\Desktop\food2\foodbucket - SMTP error\FoodBucket\bin\System.Web.Mvc.dll
+C:\Users\MNLyle\Desktop\food2\foodbucket - SMTP error\FoodBucket\bin\System.Web.Razor.dll
+C:\Users\MNLyle\Desktop\food2\foodbucket - SMTP error\FoodBucket\bin\System.Web.WebPages.Deployment.dll
+C:\Users\MNLyle\Desktop\food2\foodbucket - SMTP error\FoodBucket\bin\System.Web.WebPages.dll
+C:\Users\MNLyle\Desktop\food2\foodbucket - SMTP error\FoodBucket\bin\System.Web.WebPages.Razor.dll
+C:\Users\MNLyle\Desktop\food2\foodbucket - SMTP error\FoodBucket\bin\EntityFramework.xml
+C:\Users\MNLyle\Desktop\food2\foodbucket - SMTP error\FoodBucket\bin\Newtonsoft.Json.xml
+C:\Users\MNLyle\Desktop\food2\foodbucket - SMTP error\FoodBucket\bin\System.Net.Http.Formatting.xml
+C:\Users\MNLyle\Desktop\food2\foodbucket - SMTP error\FoodBucket\bin\System.Web.Helpers.xml
+C:\Users\MNLyle\Desktop\food2\foodbucket - SMTP error\FoodBucket\bin\System.Web.Http.xml
+C:\Users\MNLyle\Desktop\food2\foodbucket - SMTP error\FoodBucket\bin\System.Web.Http.WebHost.xml
+C:\Users\MNLyle\Desktop\food2\foodbucket - SMTP error\FoodBucket\bin\System.Web.Mvc.xml
+C:\Users\MNLyle\Desktop\food2\foodbucket - SMTP error\FoodBucket\bin\System.Web.WebPages.xml
+C:\Users\MNLyle\Desktop\food2\foodbucket - SMTP error\FoodBucket\bin\System.Web.WebPages.Deployment.xml
+C:\Users\MNLyle\Desktop\food2\foodbucket - SMTP error\FoodBucket\bin\System.Web.WebPages.Razor.xml
+C:\Users\MNLyle\Desktop\food2\foodbucket - SMTP error\FoodBucket\obj\Debug\FoodBucket.dll
+C:\Users\MNLyle\Desktop\food2\foodbucket - SMTP error\FoodBucket\obj\Debug\FoodBucket.pdb

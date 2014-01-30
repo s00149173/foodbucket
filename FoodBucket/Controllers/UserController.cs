@@ -109,15 +109,6 @@ namespace FoodBucket.Controllers
                 return img.GetBytes();
             }
 
-            //if (image != null && image.ContentLength > 0)
-            //{
-            //    byte[] imageData;
-            //    using (var binaryReader = new BinaryReader(image.InputStream))
-            //    {
-            //        imageData = binaryReader.ReadBytes(image.ContentLength);
-            //    }
-            //    return imageData;
-            //}
             return null;
         }
 

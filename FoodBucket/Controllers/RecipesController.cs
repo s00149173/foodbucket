@@ -1,8 +1,6 @@
-﻿using System.Data.Entity;
-using System.Data.Entity.Validation;
-using System.Linq;
-using System.Text;
+﻿using System.Linq;
 using System.Web.Mvc;
+using FoodBucket.Mailers;
 using FoodBucket.Models;
 using System.Web;
 using System.Web.Helpers;
@@ -12,8 +10,24 @@ namespace FoodBucket.Controllers
     public class RecipesController : Controller
     {
         private foodbucketEntities db = new foodbucketEntities();
-        //
-        // GET: /Recipes/
+
+        private delegate void NotificationDelegate(Recipies recipies);
+
+        private event NotificationDelegate NotifyEvent;
+
+        public RecipesController()
+        {
+            NotifyEvent += new NotificationDelegate(UserNotification);
+        }
+    
+
+        private IUserMailer _userMailer;
+
+        public IUserMailer UserMailer
+        {
+            get { return _userMailer; }
+            set { _userMailer = value; }
+        }
 
         public ActionResult Index(int id)
         {
@@ -21,7 +35,7 @@ namespace FoodBucket.Controllers
                 return RedirectToAction("Index", "Home");
             //select all recipes for country
 
-          var query = db.Recipies.Where(c => c.id_country == id);
+            var query = db.Recipies.Where(c => c.id_country == id);
 
             //get country from country table
             var ctry = db.Countries.SingleOrDefault(c => c.id_country == id);
@@ -31,8 +45,6 @@ namespace FoodBucket.Controllers
         }
 
 
-        //
-        // GET: /Recipes/Details/5
 
         public ActionResult Details(int id)
         {
@@ -42,28 +54,23 @@ namespace FoodBucket.Controllers
             return View(query);
         }
 
-        //
-        // GET: /Recipes/Create
 
         public ActionResult Create()
         {
-            ViewBag.countriesList2 = db.Countries.Select(c => new {id=c.id_country, value = c.name} ).Distinct();
-            //ViewBag.countriesList = new SelectList(db.Countries.OrderBy(g => g.name), "id_country", "name", 0);
+            ViewBag.countriesList2 = db.Countries.Select(c => new { id = c.id_country, value = c.name }).Distinct();
+            
 
-            //var query = db.Countries.Select(c => new { c.id_country, c.name});
-            //ViewBag.CategoryId = new SelectList(query.AsEnumerable(), "id_country", "name");
-          
             if (!Request.IsAuthenticated)
                 return RedirectToAction("Index", "Home");
             return View();
         }
 
-        //
-        // POST: /Recipes/Create
-
+     
         [HttpPost]
         public ActionResult Create(AddRecipieModel recep)
         {
+            
+            
             var rec = new Recipies
             {
                 id_country = recep.id_country,
@@ -76,13 +83,12 @@ namespace FoodBucket.Controllers
 
             try
             {
-                
+
                 db.Recipies.Add(rec);
                 db.SaveChanges();
-                
-                // TODO: Add insert logic here
+                NotifyEvent(rec);
 
-                return RedirectToAction("Index", "Recipes", new{ id= rec.id_country});
+                return RedirectToAction("Index", "Recipes", new { id = rec.id_country });
             }
             catch
             {
@@ -90,8 +96,17 @@ namespace FoodBucket.Controllers
             }
         }
 
-        //
-        // GET: /Recipes/Edit/5
+        public void UserNotification(Recipies recipie)
+        {
+            var mails = db.System_Users.Select(s => s.Email).ToList();
+
+            foreach (var mail in mails)
+            {
+                _userMailer = new UserMailer(recipie, mail);
+                UserMailer.newRecipie().Send();
+            }
+        }
+
         private static byte[] ConvertImage(HttpPostedFileBase newImage)
         {
 
@@ -104,7 +119,7 @@ namespace FoodBucket.Controllers
                 return img.GetBytes();
             }
 
-     
+
             return null;
         }
 
@@ -121,55 +136,6 @@ namespace FoodBucket.Controllers
                 Response.BinaryWrite(image);
                 Response.End();
 
-            }
-        }
-
-        public ActionResult Edit(int id)
-        {
-            return View();
-        }
-
-        //
-        // POST: /Recipes/Edit/5
-
-        [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add update logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-        //
-        // GET: /Recipes/Delete/5
-
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
-
-        //
-        // POST: /Recipes/Delete/5
-
-        [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add delete logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
             }
         }
 
